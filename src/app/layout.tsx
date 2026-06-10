@@ -22,6 +22,8 @@ const dmSans = DM_Sans({
 })
 
 export const metadata: Metadata = {
+
+  metadataBase: new URL('https://mgwhiteservicellc.com'), // ← añadir esta línea
   title: {
     template: '%s | MG White Service LLC — Austin, TX',
     default: 'MG White Service LLC | Limpieza, Remodelaciones y Pintura — Austin, TX',
