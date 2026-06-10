@@ -1,0 +1,85 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --navy:      #1a2744;
+  --navy-light:#243260;
+  --gold:      #b8953a;
+  --gold-light:#d4aa52;
+  --gold-pale: #f5f0e8;
+}
+
+@layer base {
+  html { scroll-behavior: smooth; }
+  body { @apply font-body text-navy antialiased bg-white; }
+  h1,h2,h3,h4 { @apply font-display; }
+}
+
+@layer components {
+  /* ── Buttons ── */
+  .btn-gold {
+    @apply bg-gold text-white font-semibold px-7 py-3.5 rounded-md
+           transition-all duration-200 hover:bg-gold-light hover:-translate-y-0.5
+           hover:shadow-lg hover:shadow-gold/30 active:scale-95 inline-flex items-center gap-2;
+  }
+  .btn-navy {
+    @apply bg-navy text-white font-semibold px-7 py-3.5 rounded-md
+           transition-all duration-200 hover:bg-navy-light hover:-translate-y-0.5
+           hover:shadow-lg active:scale-95 inline-flex items-center gap-2;
+  }
+  .btn-outline {
+    @apply border-2 border-navy text-navy font-semibold px-7 py-3.5 rounded-md
+           transition-all duration-200 hover:bg-navy hover:text-white active:scale-95
+           inline-flex items-center gap-2;
+  }
+  .btn-outline-white {
+    @apply border-2 border-white/40 text-white font-medium px-7 py-3.5 rounded-md
+           transition-all duration-200 hover:border-white hover:bg-white/10 active:scale-95;
+  }
+
+  /* ── Tags ── */
+  .section-tag {
+    @apply inline-block text-gold text-xs font-bold tracking-[0.2em] uppercase
+           mb-3 border-b-2 border-gold pb-0.5;
+  }
+
+  /* ── Cards ── */
+  .service-card {
+    @apply bg-white border border-gray-100 rounded-xl p-7
+           transition-all duration-300 hover:-translate-y-1.5 hover:shadow-xl
+           hover:border-gold/30 relative overflow-hidden;
+  }
+  .service-card::before {
+    content: '';
+    @apply absolute top-0 left-0 right-0 h-0.5 bg-gold scale-x-0
+           transition-transform duration-300 origin-left;
+  }
+  .service-card:hover::before { @apply scale-x-100; }
+
+  /* ── Form ── */
+  .input-field {
+    @apply w-full px-4 py-3 border border-gray-200 rounded-lg text-navy
+           font-body text-sm transition-colors duration-200 outline-none
+           focus:border-gold focus:ring-2 focus:ring-gold/20 bg-white;
+  }
+
+  /* ── Divider line gold ── */
+  .gold-divider {
+    @apply w-12 h-0.5 bg-gold my-4;
+  }
+}
+
+/* WhatsApp pulse */
+@keyframes pulse-green {
+  0%,100% { box-shadow: 0 0 0 0 rgba(37,211,102,.5); }
+  50%      { box-shadow: 0 0 0 12px rgba(37,211,102,0); }
+}
+.wa-pulse { animation: pulse-green 2.5s infinite; }
+
+/* Scroll reveal utility */
+@keyframes fadeUp {
+  from { opacity:0; transform:translateY(24px); }
+  to   { opacity:1; transform:translateY(0); }
+}
+.fade-up { animation: fadeUp .6s ease both; }
