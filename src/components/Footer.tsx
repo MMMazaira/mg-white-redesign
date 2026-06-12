@@ -70,7 +70,7 @@ export default function Footer() {
                 </a>
               </li>
               <li>
-                <a href={COMPANY.whatsapp} target="_blank" rel="noopener noreferrer"
+                <a href={COMPANY.whatsappHref} target="_blank" rel="noopener noreferrer"
                   className="text-xs sm:text-sm text-white/50 hover:text-gold transition-colors flex items-center gap-2 min-h-[36px]">
                   💬 WhatsApp
                 </a>
