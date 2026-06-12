@@ -8,7 +8,7 @@ export default function Hero() {
   const { lang } = useLang()
   const T = t[lang]
 
-  return (
+ return (
     <section className="relative w-full min-h-[85vh] bg-white overflow-hidden pt-20">
 
       {/* IMAGE BACKGROUND */}

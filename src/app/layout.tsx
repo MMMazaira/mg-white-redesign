@@ -56,7 +56,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           <Navbar />
           <main>{children}</main>
           <Footer />
-          <WhatsAppButton href={COMPANY.whatsappHref} />
+          <WhatsAppButton whatsappHref={COMPANY.whatsappHref} />
         </LangProvider>
       </body>
     </html>
