@@ -8,71 +8,116 @@ export default function Hero() {
   const { lang } = useLang()
   const T = t[lang]
 
- return (
-    <section className="relative w-full min-h-[85vh] bg-white overflow-hidden pt-20">
+  return (
+    <>
+      {/* ── MÓVIL (< md): imagen arriba visible, texto debajo ── */}
+      <section className="md:hidden w-full bg-navy pt-20">
 
-      {/* IMAGE BACKGROUND */}
-      <div className="absolute inset-0">
-        <Image
-          src="/images/hero-kitchen.jpg"
-          alt="MG White Service LLC — Kitchen Remodeling Austin TX"
-          fill
-          priority
-          className="object-cover object-center"
-        />
+        {/* Imagen con aspect ratio fijo — siempre visible completa */}
+        <div className="relative w-full aspect-[4/3]">
+          <Image
+            src="/images/hero-kitchen.jpg"
+            alt="MG White Service LLC — Kitchen Remodeling Austin TX"
+            fill
+            priority
+            className="object-cover object-center"
+            sizes="100vw"
+          />
+        </div>
 
-        {/* overlay para legibilidad */}
-        <div className="absolute inset-0 bg-black/45" />
-      </div>
-
-      {/* CONTENT */}
-      <div className="relative z-10 max-w-7xl mx-auto px-5 flex items-center min-h-[85vh]">
-
-        <div className="max-w-3xl text-white">
-
-          {/* badge */}
-          <div className="flex items-center gap-3 mb-6">
+        {/* Texto debajo — sin tapar la imagen */}
+        <div className="px-5 py-10 text-white">
+          <div className="flex items-center gap-3 mb-5">
             <div className="w-10 h-0.5 bg-gold" />
             <span className="text-gold text-xs font-bold tracking-widest uppercase">
               {T.hero.badge}
             </span>
           </div>
 
-          {/* title */}
-          <h1 className="font-display font-bold leading-[1.05] mb-6">
-            <span className="block text-4xl sm:text-5xl lg:text-[58px]">
-              {T.hero.h1a}
-            </span>
-            <span className="block text-4xl sm:text-5xl lg:text-[58px] text-gold mt-2">
-              {T.hero.h1b}
-            </span>
+          <h1 className="font-display font-bold leading-[1.05] mb-5">
+            <span className="block text-3xl">{T.hero.h1a}</span>
+            <span className="block text-3xl text-gold mt-2">{T.hero.h1b}</span>
           </h1>
 
-          {/* subtitle */}
-          <p className="text-white/80 text-lg max-w-xl mb-8">
+          <p className="text-white/80 text-base max-w-xl mb-8">
             {T.hero.sub}
           </p>
 
-          {/* CTA */}
-          <div className="flex flex-col sm:flex-row gap-4">
-            <Link
-              href="/#servicios"
-              className="btn-navy px-6 py-4 rounded-none text-sm justify-center"
-            >
+          <div className="flex flex-col gap-3">
+            <Link href="/#servicios"
+              className="btn-navy px-6 py-4 rounded-none text-sm justify-center">
               {T.hero.cta1}
             </Link>
-
-            <Link
-              href="/#servicios"
-              className="btn-gold px-6 py-4 rounded-none text-sm justify-center"
-            >
+            <Link href="/#servicios"
+              className="btn-gold px-6 py-4 rounded-none text-sm justify-center">
               {T.hero.cta2}
             </Link>
           </div>
-
         </div>
-      </div>
+      </section>
 
-    </section>
+      {/* ── TABLET / DESKTOP (≥ md): tu Hero original, con altura suficiente ── */}
+      <section className="hidden md:block relative w-full overflow-hidden pt-20"
+        style={{ minHeight: 'calc(100vh - 80px)' }}>
+
+        {/* IMAGE BACKGROUND */}
+        <div className="absolute inset-0">
+          <Image
+            src="/images/hero-kitchen.jpg"
+            alt="MG White Service LLC — Kitchen Remodeling Austin TX"
+            fill
+            priority
+            className="object-cover object-center"
+            sizes="100vw"
+          />
+          {/* Gradiente: más oscuro a la izquierda (texto), aclara a la derecha */}
+          <div className="absolute inset-0 bg-gradient-to-r from-black/65 via-black/40 to-black/15" />
+        </div>
+
+        {/* CONTENT — igual que tu original */}
+        <div className="relative z-10 max-w-7xl mx-auto px-5 flex items-center"
+          style={{ minHeight: 'calc(100vh - 80px)' }}>
+
+          <div className="max-w-3xl text-white">
+
+            {/* badge */}
+            <div className="flex items-center gap-3 mb-6">
+              <div className="w-10 h-0.5 bg-gold" />
+              <span className="text-gold text-xs font-bold tracking-widest uppercase">
+                {T.hero.badge}
+              </span>
+            </div>
+
+            {/* title */}
+            <h1 className="font-display font-bold leading-[1.05] mb-6">
+              <span className="block text-4xl sm:text-5xl lg:text-[58px]">
+                {T.hero.h1a}
+              </span>
+              <span className="block text-4xl sm:text-5xl lg:text-[58px] text-gold mt-2">
+                {T.hero.h1b}
+              </span>
+            </h1>
+
+            {/* subtitle */}
+            <p className="text-white/80 text-lg max-w-xl mb-8">
+              {T.hero.sub}
+            </p>
+
+            {/* CTA */}
+            <div className="flex flex-col sm:flex-row gap-4">
+              <Link href="/#servicios"
+                className="btn-navy px-6 py-4 rounded-none text-sm justify-center">
+                {T.hero.cta1}
+              </Link>
+              <Link href="/#servicios"
+                className="btn-gold px-6 py-4 rounded-none text-sm justify-center">
+                {T.hero.cta2}
+              </Link>
+            </div>
+
+          </div>
+        </div>
+      </section>
+    </>
   )
 }
